@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Slides built on impress.js</title>
+    <link rel="stylesheet" type="text/css" href="css/page.css">
+  </head>
+  <body class="impress-not-supported">
+    <div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+
+    <div id="impress">
+      <div id="cover" class="step slide" data-x="-2000" data-y="-2000">
+        <h1 class="center">Work Share</h1>
+        <q class="center">by luckydrq</q>
+      </div>
+      <!--topic1-->
+      <div id="topic1" class="step slide" data-x="-1000" data-y="-2000">
+        <h2 class="center">Topic 1</h2>
+        <q class="center">A project called <b>Lego</b></q>
+      </div>
+      <div id="what-is-lego" class="step" data-x="-1000" data-y="-1000" data-scale="4">
+        <span>So..What is <b>Lego</b></span>
+      </div>
+      <div id="lego-definition" class="step" data-x="-300" data-y="1000" data-scale="4" data-rotate="90">
+        <span>It devides a page into pieces</span>
+      </div>
+      <div id="lego-definition2" class="step" data-x="-1800" data-y="800" data-scale="4" data-rotate="45">
+        <span>And..it is implemented by the <b class="rotating">back end</b>,not the <b class="scaling">front end</b></span>
+      </div>
+      <div id="lego-how" class="step center" data-x="-800" data-y="-600" data-z="-3000" data-rotate="300" data-scale="1">
+        <b>How?</b>
+      </div>
+      <div id="lego-code" class="step slide" data-x="-2000" data-y="2000">
+        <q>It goes like this:</q>
+        <code>
+          &lt;body <strong>bx-app</strong>&gt;<br/>
+          &nbsp;&nbsp;&lt;div class="span5"&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>#mosaic("ceiling")</strong><br/>
+          &nbsp;&nbsp;&lt;/div&gt;<br/>
+          &nbsp;&nbsp;...<br/>
+          &lt;/body&gt;
+        </code>
+      </div>
+      <div id="mosaic-mean" class="step" data-x="-2000" data-y="2500">
+        <span>What does <b>#mosaic</b> mean?</span>
+      </div>
+      <div id="mosaic-code" class="step slide" data-x="-2000" data-y="3000">
+        <q>It is syntax of <b>Velocity</b></q>
+        <code>
+          #macro( mosaic $name $index $spm)<br />
+          &nbsp;&nbsp;#set( $namespace = $pageAttribute.get('namespace') )<br />
+          &nbsp;&nbsp;#set( $id = $name + ($index || '') )<br />
+          &nbsp;&nbsp;...<br />
+          &nbsp;&nbsp;&lt;div id="$id" class="$css" bx-name="$namespace/$name" data-spm="$!{spm}"><strong>#parse($vm)</strong>&lt;/div&gt;<br />
+          #end
+        </code>
+      </div>
+      <div id="let-me-explain" class="step" data-x="-1300" data-y="3100" data-rotate="90">
+        <span>Uh..you may get confused.</span><br />
+        <span>Let me explain...</span>
+      </div>
+      <div id="component" class="step center" data-x="-1300" data-y="4500" data-rotate="90">
+        <span>We call it a <b>"Component"</b></span>
+        <img src="images/1.png" />
+      </div>
+      <div id="getting-work" class="step center" data-x="-2250" data-y="4500">
+        <span>How it works?</span>
+      </div>
+      <div id="how-to-work" class="step center" data-x="-2250" data-y="5000" data-z="-100" data-rotate-x="-40" data-rotate-y="10">
+        <span>KISSY, Brix</span>
+        <b class="rotating rb">=></b>
+        <b class="json">JSON</b>
+        <b class="rotating rt">=></b>
+        <span>dataApi</span>
+      </div>
+      <div id="awsome" class="step" data-x="-2000" data-y="5500">
+        <b>====&gt;&nbsp;&nbsp;Awsome!</b>
+      </div>
+      <div id="not-awsome" class="step" data-x="-1000" data-y="5500">
+        <b>====&gt;&nbsp;&nbsp;<span>Awsome!</span></b><br />
+        <b>Some problems</b>
+      </div>
+      <div id="lego-problems" class="step" data-x="-1000" data-y="6500" data-rotate="90">
+        <b>Discussion:</b><br />
+        <span>1、Page memory</span><br />
+        <span>2、Resource manage</span>
+      </div>
+
+      <!--topic2-->
+      <div id="topic2" class="step slide" data-x="1000" data-y="-2000">
+        <h2 class="center">Topic 2</h2>
+        <q class="center">Concurrent tasks in <b>Mosaic daemon</b></q>
+      </div>
+      <div id="mosaic-daemon" class="step center" data-x="1000" data-y="-1200">
+        <span>It is a <b class="rotating">node.js</b> app that is used to deal with the published components.</span>
+      </div>
+      <div id="mo-publish" class="step" data-x="1800" data-y="-800" data-rotate="90">
+        <span>When a client starts to publish a component, the package will be <b class="positioning">gzipped</b> and sent to the server via Http-Post.</span>
+      </div>
+      <div id="mosaic-server" class="step" data-x="1000" data-y="-200">
+        <span>The server will do the following staffs when receiving a request:</span><br />
+        <b>1、Ungzip the files</b><br />
+        <b>2、Concat and minify js and css files for deploying</b><br />
+        <b>3、Upload to CDN</b><br />
+        <b>4、Update local repository</b><br /><br />
+        <span>Every step is a <b>promise</b></span>
+      </div>
+      <div id="time-to-explain" class="step center" data-x="1000" data-y="500">
+        <span>Well..time to explain</span>
+      </div>
+      <div id="if-concurrent" class="step" data-x="1000" data-y="1200">
+        <span>If concurrent requests arrive, only one can be <b>resolved</b>. Others will be <b>rejected</b>.</span>
+      </div>
+      <div id="not-pretty" class="step center" data-x="2000" data-y="1200">
+        <span>That's not pretty!</span>
+      </div>
+      <div id="sequence-task" class="step" data-x="2200" data-y="2000" data-rotate="90">
+        <span>Concurrency is not a problem for node.js since its nature of evented IO</span>
+      </div>
+      <div id="however-now" class="step" data-x="1000" data-y="2500">
+        <span>However, the tasks in our project need to execute sequence by sequence to some point, such as uploading to CDN</span>
+      </div>
+      <div id="so-what" class="step" data-x="1000" data-y="3000">
+        <span>So, we need to analyze each step of a task to study the possibility of concurrency and also find out which one is time-consuming</span>
+      </div>
+      <div id="my-solution" class="step" data-x="4000" data-y="3000" data-z="-3000" data-rotate="300" data-scale="1">
+        <span>My solution:</span><br />
+        <a href="https://gist.github.com/luckydrq/6334033" target="_blank">https://gist.github.com/luckydrq/6334033</a>
+      </div>
+      <div id="topic2-discussion" class="step" data-x="1000" data-y="3500">
+        <b>Discusstion</b>
+      </div>
+      <!--topic3-->
+      <div id="topic3" class="step slide" data-x="4000" data-y="-2000">
+        <h2 class="center">Topic 3</h2>
+        <q class="center">Introduction of <b>Node-inspector</b></q>
+      </div>
+      <div id="node-inspector" class="step" data-x="4000" data-y="-1200">
+        <span>Node-inspector is a tool which allows debuging node.js apps in browser</span>
+      </div>
+      <div id="simple-to-use" class="step center" data-x="4000" data-y="-500">
+        <span>It's convinient and simple</span>
+      </div>
+      <div id="install-node-inspector" class="step" data-x="4000" data-y="0">
+        <span>First of all, install globally:</span>
+        <b>npm install node-inspector --global</b>
+      </div>
+      <div id="for-example" class="step" data-x="3700" data-y="1000" data-rotate="90">
+        <span>Assume that i have a simple app.js:</span><br />
+        <p>var http = require('http')</p>
+        <p>var express = require('express')</p>
+        <p>var app = express()</p>
+        <p>app.use('/hello', function(req, res){</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s = "hello world"</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.end(s)</p>
+        <p>})</p>
+        <p>http.createServer(app).listen(7000)</p>
+      </div>
+      <div id="then-cmd" class="step" data-x="4800" data-y="600">
+        <span>Then take following steps:</span>
+        <p><b>1、cd path/of/app</b></p>
+        <p><b>2、node --debug-brk app.js</b></p>
+        <span>After that, the terminal shows "debugger listening on port 5858"</span>
+      </div>
+      <div id="open-node-inspector" class="step" data-x="5800" data-y="600">
+        <span>Open a new terminal and run:</span>
+        <p><b>node-inspector</b></p>
+        <span>It will tell you to visit <a>http://0.0.0.0:8888/debug?port=5858</a> to start debugging which means success</span>
+      </div>
+      <div id="open-link" class="step" data-x="5800" data-y="-200" data-rotate="90">
+        <span>Open the link in a tab of chrome:</span>
+        <img src="images/2.png" />
+      </div>
+      <div id="click-continue" class="step" data-x="5200" data-y="-800">
+        <span>It stops at the first line, set breaks and click to skip(press F8 in windows)</span>
+      </div>
+      <div id="open-app" class="step" data-x="5200" data-y="-1300">
+        <span>Then open a new tab and link your app page (<a>http://localhost:7000/hello</a> in this example)</span>
+      </div>
+      <div id="debug-in" class="step" data-x="6400" data-y="-1300">
+        <span>Well..it works!</span>
+        <img src="images/3.png" />
+      </div>
+      <div id="end" class="step center" data-x="10000" data-y="-800" data-z="-3000" data-rotate="300" data-scale="1">
+        <b>Thank you</b>
+      </div>
+      <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="15">
+      </div>
+    </div>
+    <script type="text/javascript" src="../impress.js"></script>
+    <script type="text/javascript">
+      impress().init()
+    </script>
+  </body>
+</html>
